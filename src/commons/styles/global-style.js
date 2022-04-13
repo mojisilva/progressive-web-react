@@ -27,10 +27,10 @@ const GlobalStyle = createGlobalStyle `
     }
 
     .mb-2{
-        margin-bottom: 16px;
+        margin-bottom: 20px;
     }
     .pt-2{
-        padding-top: 16px;
+        padding-top: 20px;
     }
     .cursor{
         cursor:pointer;
