@@ -33,8 +33,10 @@ function Board({data}){
                 <Card value={getValue(recovered)} label="Total de Recuperados" color="#67C887">
                 </Card>
             </Grid>
-
         </Grid>
     )
 }
+
+
+
 export default memo(Board)

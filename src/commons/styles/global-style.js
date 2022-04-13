@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle `
     }
 
     .mb-2{
-        margin-botton: 16px;
+        margin-bottom: 16px;
     }
     .pt-2{
         padding-top: 16px;

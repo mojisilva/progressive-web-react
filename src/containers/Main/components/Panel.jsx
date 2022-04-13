@@ -8,27 +8,28 @@ const navigatorHasShare = navigator.share;
 
 function Panel({updateAt, onChange, data, country, getCovidData}){
     const{cases, recovered, deaths, todayCases, todayDeaths} = data;
-    const renderCountries = (country, index) =>{
+    
+    
+    const renderCountries = (country, index) => (
         <MenuItem key={`country-${index}`} value={country.value}>
             <ItemStyled>
                 <div>{country.label}</div>
                 <img src={country.flag} alt={`País -${country.label}`}/>
             </ItemStyled>
-
         </MenuItem>
-    }
-    const textCovid19 = `País: ${country} - Recuperados: ${recovered}` 
+    )
+
+    const textCovid19 = `País: ${country} - Dados atualizados em ${updateAt} - Hoje - Casos: ${todayCases}. Óbitos: ${todayDeaths}. Total - Casos: ${cases}. Óbitos: ${deaths}. Recuperados: ${recovered}`
 
     const copyInfo = () =>{
         navigator.clipboard.writeText(textCovid19)
     }
 
-
     const shareInfo =() =>{
         navigator.share({
             title: `Dados do Covid19 - ${country}`,
             text: textCovid19,
-            url: 'https://covid19dio'
+            url: 'https://moji-pwa-covid19.herokuapp.com/'
         })
     }
     const renderShareButton = (
@@ -41,7 +42,7 @@ function Panel({updateAt, onChange, data, country, getCovidData}){
 
     const renderCopyButton = (
         <div>
-            <Button variant='container' color='primary' onClick={copyInfo}>
+            <Button variant='contained' color='primary' onClick={copyInfo}>
                 Copiar
             </Button>
         </div>
@@ -52,8 +53,8 @@ function Panel({updateAt, onChange, data, country, getCovidData}){
             <CardPanelContentStyled>
                 <div>
                     <Typography variant='h5' component='span' color='primary'>COVID19</Typography>
-                    <Typography variant='h6' component='span' color='primary'>Painel Coronavírus</Typography>
-                    <Typography variant='body2' component='span' color='primary'>Atualizado em: {updateAt}</Typography>
+                    <Typography variant='h6' component='p' color='primary'>Painel Coronavírus</Typography>
+                    <Typography variant='body2' component='span' color='secondary'>Atualizado em: {updateAt}</Typography>
                     <div className='pt-2'>
                         <Select onChange={onChange} value={country}>
                             {COUNTRIES.map(renderCountries)}
